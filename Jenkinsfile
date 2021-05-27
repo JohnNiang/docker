@@ -53,7 +53,7 @@ stage('Build') {
                 //        }
                 //    }
                 //}
-                
+
                 // Let's always clean up the docker images at the very end
                 powershell(script: '& docker system prune --force --all', returnStatus: true)
             } else {
@@ -111,7 +111,7 @@ stage('Build') {
                             try {
                                 infra.withDockerCredentials {
                                   sh "make test-$label"
-                                }    
+                                }
                             } catch(err) {
                                 error("${err.toString()}")
                             } finally {
@@ -134,7 +134,7 @@ stage('Build') {
                 //    }
                 //}
 
-                // Let's always clean up the docker images at the very end
+                // Let's always clean up the docker images at the every end
                 sh(script: 'docker system prune --force --all', returnStatus: true)
             } else {
                 /* In our trusted.ci environment we only want to be publishing our
